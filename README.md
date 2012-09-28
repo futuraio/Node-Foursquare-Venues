@@ -16,3 +16,6 @@ var foursquare = require('node-foursquare-venues')('clientId', 'secretId')
 
 The module follows the associated API routes of Foursquare.
 
+To run the tests run
+
+`mocha tests 'clientId' 'secretId'`

@@ -1,4 +1,4 @@
-var foursquare = require('../lib')('2M3G51CNK2XPGPNENIQ4YM4MJRTVT5X500URF5BM5KLI0DG3', 'K40XMENAHJCA5PFNUTXVWYTJEHOUVHXQIAL44ACJKPUMOQ3U'),
+var foursquare = require('../lib')(process.argv[2], process.argv[3]),
 	assert = require('chai').assert;
 
 describe('the foursquare node api', function(){
