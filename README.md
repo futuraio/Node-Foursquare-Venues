@@ -15,3 +15,4 @@ var foursquare = require('node-foursquare-venues')('clientId', 'secretId')
 [API Reference](https://developer.foursquare.com/overview/venues)
 
 The module follows the associated API routes of Foursquare.
+
