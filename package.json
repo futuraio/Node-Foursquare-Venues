@@ -1,0 +1,35 @@
+{
+  "author": {
+    "name": "TJ Krusinski",
+    "email": "tj@futura.io",
+    "url": "http://futura.io"
+  },
+  "name": "node-foursquare-venues",
+  "description": "v2 API Wrapper for foursquare venue platform",
+  "main": "./foursquare",
+  "version": "0.0.1",
+  "keywords": [
+    "foursquare",
+    "four square",
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlos8f/node-idgen.git"
+  },
+  "homepage": "https://github.com/carlos8f/node-idgen",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "license": "MIT",
+  "readme": "idgen\n-----\n\nMinimal ID generator\n\n[![build status](https://secure.travis-ci.org/carlos8f/node-idgen.png)](http://travis-ci.org/carlos8f/node-idgen)\n\nInstall\n=======\n\n```bash\n$ npm install idgen\n```\n\nUsage\n=====\n\n```javascript\nvar idgen = require('idgen');\nconsole.log(idgen());\nconsole.log(idgen(10, 'abcdefg'));\n```\n\n```\nJQGZwAVR\negbacgfbgc\n```\n\nCLI version\n===========\n\n```bash\n$ npm install -g idgen\n$ idgen\n1WWQ1OEc\n$ idgen 4 0123456789\n6533\n$ idgen_hex 24\ndd8ea9d0243e1a9b2f28a068\n```\n\nLicense\n=======\n\nMIT",
+  "_id": "idgen@1.1.2",
+  "dist": {
+    "shasum": "7a6ef496692d43a5618feae3ec8f136a353c0c65"
+  },
+  "_from": "idgen@1.1.2"
+}
