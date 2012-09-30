@@ -1,4 +1,4 @@
-var foursquare = require('../lib')(process.argv[2], process.argv[3]),
+var foursquare = require('../foursquare.js')(process.argv[2], process.argv[3]),
 	assert = require('chai').assert;
 
 describe('the foursquare node api', function(){
