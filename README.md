@@ -18,7 +18,7 @@ The module follows the associated API routes of Foursquare.
 
 All methods take a callback as their last parameter.
 
-A `searchObj` is an object containing the parameters [outlined here.](https://developer.foursquare.com/docs/venues/search)
+A `searchObj` is an object containing the properties [outlined here.](https://developer.foursquare.com/docs/venues/search)
 
 * `foursquare.venues`
    * `.venue(venueId, callack)`
