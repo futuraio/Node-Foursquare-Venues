@@ -21,7 +21,7 @@ All methods take a callback as their last parameter.
 A `searchObj` is an object containing the properties [outlined here.](https://developer.foursquare.com/docs/venues/search)
 
 * `foursquare.venues`
-   * `.venue(venueId, callack)`
+   * `.venue(venueId, callback)`
    * `.categories(callback)`
    * `.search(searchObj, callback)`
    * `.explore(searchObj, callback)`
