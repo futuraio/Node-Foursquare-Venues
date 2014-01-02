@@ -1,7 +1,8 @@
-var foursquare = require('../foursquare.js')(process.argv[2], process.argv[3]),
+var foursquare = require('../foursquare.js')(process.argv[3], process.argv[4]),
 	assert = require('chai').assert;
 
 describe('the foursquare node api', function(){
+	this.timeout(5000);
 	describe('the venues methods', function(){
 		describe('venues#venue()', function(){
 			it('gets a venue', function(done){

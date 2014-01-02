@@ -17,15 +17,8 @@
     "url": "https://github.com/FuturaIO/Node-Foursquare-Venues"
   },
   "homepage": "https://github.com/FuturaIO/Node-Foursquare-Venues",
-  "dependencies": {
-	"chai": "1.2.x"
-  },
   "devDependencies": {
-    "mocha": "*"
-  },
-  "optionalDependencies": {},
-  "engines": {
-    "node": "*"
+	"chai": "1.2.x"
   },
   "license": "MIT"
 }
