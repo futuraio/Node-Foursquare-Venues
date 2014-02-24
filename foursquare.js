@@ -28,7 +28,7 @@ module.exports = function(appId, secretKey){
 			req.end();
 
 			req.on('error', function(){
-				return callback(true, 'Trouble with network request to Foursquare');
+				return callback('Trouble with network request to Foursquare');
 			});
 		},
 		_response: function(req, callback){
@@ -45,18 +45,17 @@ module.exports = function(appId, secretKey){
 					response += data;
 				});
 				res.on('end', function(){
-					err = res.statusCode;
+					if (res.statusCode >= 300) err = res.statusCode;
 					try {
 						response = JSON.parse(response);
 					} catch(e) {
-						err = 500;
-						response = "Foursquare did not return JSON";
+						err = 'Foursquare did not return JSON';
 					};
 					return callback(err, response);
 				});
 
 				res.on('error', function(){
-					return callback(true, 'Trouble with network request from Foursquare');
+					return callback('Trouble with network request from Foursquare');
 				});
 			});
 		},
@@ -83,7 +82,7 @@ module.exports = function(appId, secretKey){
 			return path+'client_id='+appId+'&client_secret='+secretKey+'&v=20120928';
 		},
 		fail: function(cb) {
-			cb(true, 'Invalid parameters');
+			cb('Invalid parameters');
 		},
 	};
 	
