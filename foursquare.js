@@ -33,7 +33,7 @@ module.exports = function(appId, secretKey){
 		},
 		_response: function(req, callback){
 			var me = this,
-				err;
+				err = null;
 				
 			if (typeof req === 'function') return;
 			
