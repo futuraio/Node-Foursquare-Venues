@@ -28,7 +28,7 @@ module.exports = function(appId, secretKey){
 			req.end();
 
 			req.on('error', function(){
-				return callback('Trouble with network request to Foursquare');
+				return callback('Trouble with network request to Foursquare', null);
 			});
 		},
 		_response: function(req, callback){
@@ -55,7 +55,7 @@ module.exports = function(appId, secretKey){
 				});
 
 				res.on('error', function(){
-					return callback('Trouble with network request from Foursquare');
+					return callback('Trouble with network request from Foursquare', null);
 				});
 			});
 		},
@@ -82,7 +82,7 @@ module.exports = function(appId, secretKey){
 			return path+'client_id='+appId+'&client_secret='+secretKey+'&v=20120928';
 		},
 		fail: function(cb) {
-			cb('Invalid parameters');
+			cb('Invalid parameters', null);
 		},
 	};
 	
