@@ -88,9 +88,9 @@ module.exports = function(appId, secretKey){
 	
 	return {
 		venues: {
-			venue: function(venueId, callback){
+			venue: function(venueId, infoObj, callback){
 				if (!venueId || !callback) return fourSquare.fail(callback);
-				fourSquare.get(fourSquare.query('/venues/'+venueId), callback);
+				fourSquare.get(fourSquare.query('/venues/'+venueId, infoObj), callback);
 			},
 			categories: function(callback){
 				if (!callback) return fourSquare.fail(callback);
