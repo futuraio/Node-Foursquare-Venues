@@ -71,7 +71,7 @@ module.exports = function(appId, secretKey){
 			args.forEach(console.log);
 		},
 		logging: false,
-		locale: en,
+		locale: 'en',
 		query: function(path, obj){
 			var requestData;
 			
