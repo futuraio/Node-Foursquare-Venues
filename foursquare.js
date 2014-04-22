@@ -17,6 +17,7 @@ module.exports = function(appId, secretKey){
 				path: "/v2"+path,
 				headers: {
 					'Accept': 'text/json',
+					'Accept-Language': this.locale,
 					'Content-Type': 'application/x-www-form-urlencoded',
 					'Content-Length': '0'
 				},
@@ -70,6 +71,7 @@ module.exports = function(appId, secretKey){
 			args.forEach(console.log);
 		},
 		logging: false,
+		locale: en,
 		query: function(path, obj){
 			var requestData;
 			
@@ -199,6 +201,11 @@ module.exports = function(appId, secretKey){
 				fourSquare.get(fourSquare.query('/pages/'+pageId+'/venues', infoObj), callback);
 			},
 		},
+		config: {
+			set_locale: function(locale){
+				fourSquare.locale = locale;
+			},
+		}
 	};
 	
 };
