@@ -7,7 +7,7 @@
   "name": "node-foursquare-venues",
   "description": "v2 API Wrapper for foursquare venue platform",
   "main": "./foursquare",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "keywords": [
     "foursquare",
     "four square"
