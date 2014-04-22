@@ -20,5 +20,8 @@
   "devDependencies": {
 	"chai": "1.2.x"
   },
+  "scripts": {
+	"test": "mocha tests"
+  },
   "license": "MIT"
 }
