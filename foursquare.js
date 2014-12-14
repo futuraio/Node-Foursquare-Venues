@@ -5,7 +5,7 @@ var querystring = require('querystring');
 
 function noop () {};
 
-module.exports = function(appId, secretKey){
+module.exports = function(appId, secretKey, version, mode){
   
   var fourSquare = {
     _request: function(method, path, callback){
@@ -78,7 +78,9 @@ module.exports = function(appId, secretKey){
       } else {
         path += '?';
       };
-      return path+'client_id='+appId+'&client_secret='+secretKey+'&v=20120928';
+      version = version || '20120928';
+      mode = mode || 'foursquare';
+      return path+'client_id='+appId+'&client_secret='+secretKey+'&v='+version+'&m='+mode;
     },
     fail: function(cb) {
       cb = cb || noop;
