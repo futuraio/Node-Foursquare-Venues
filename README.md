@@ -8,8 +8,10 @@ To Install
 
 
 ``` javascript
-var foursquare = require('node-foursquare-venues')('clientId', 'secretId')
+var foursquare = require('node-foursquare-venues')('clientId', 'secretId', 'version', 'mode')
 ```
+
+Note that `version` and `mode` are optional.
 
 ## Reference
 [API Reference](https://developer.foursquare.com/overview/venues)
