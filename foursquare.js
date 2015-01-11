@@ -79,8 +79,8 @@ module.exports = function(appId, secretKey, version, mode){
         path += '?';
       };
       version = version || '20120928';
-      mode = mode || 'foursquare';
-      return path+'client_id='+appId+'&client_secret='+secretKey+'&v='+version+'&m='+mode;
+      mode = mode || false;
+      return path+'client_id='+appId+'&client_secret='+secretKey+'&v='+version+(false !== mode ? ('&m='+mode) : '');
     },
     fail: function(cb) {
       cb = cb || noop;
