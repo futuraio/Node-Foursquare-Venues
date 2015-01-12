@@ -12,6 +12,7 @@ var foursquare = require('node-foursquare-venues')('clientId', 'secretId', 'vers
 ```
 
 Note that `version` and `mode` are optional.
+Also note: if mode is not specified, no mode will be sent to foursquare. Foursquare will then use its internal default. At the time of writing (2015-01-12) this seems to be 'swarm'.
 
 ## Reference
 [API Reference](https://developer.foursquare.com/overview/venues)
