@@ -54,7 +54,7 @@ module.exports = function(appId, secretKey, version, mode){
           } catch(e) {
             err = 'Foursquare did not return JSON';
           };
-          return callback(err, response);
+          return callback(err, response, res);
         });
 
         res.on('error', function(){
@@ -86,6 +86,23 @@ module.exports = function(appId, secretKey, version, mode){
       cb = cb || noop;
       cb('Invalid parameters', null);
     },
+	status: function(err, data, res, callback) {
+      callback(err, {
+        rate: {
+          limit: res.headers['x-ratelimit-limit'],
+          remaining: res.headers['x-ratelimit-remaining'],
+          reset: res.headers['x-ratelimit-reset']
+        },
+        server: {
+          served: res.headers['x-served-by'],
+          via: res.headers['via'],
+          cache: {
+            status: res.headers['x-cache'],
+            hits: res.headers['x-cache-hits']
+          }
+        }
+      }, res);
+    }
   };
   
   return {
@@ -150,6 +167,11 @@ module.exports = function(appId, secretKey, version, mode){
         if (!venueId || !infoObj || !callback) return fourSquare.fail(callback);
         fourSquare.get(fourSquare.query('/venues/'+venueId+'/tips', infoObj), callback);
       },
+      status: function(venueId, infoObj, callback) {
+        this.venue(venueId, infoObj, function(err, data, res) {
+          fourSquare.status(err, data, res, callback);
+        });
+      }
     },
     tips: {
       search: function(infoObj, callback){
@@ -168,6 +190,11 @@ module.exports = function(appId, secretKey, version, mode){
         if (!tipId || !infoObj || !callback) return fourSquare.fail(callback);
         fourSquare.get(fourSquare.query('/tips/'+tipId+'/listed', infoObj), callback);
       },
+      status: function(tipId, callback) {
+        this.likes(tipId, function(err, data, res) {
+          fourSquare.status(err, data, res, callback);
+        });
+      }
     },
     lists: {
       detail: function(listId, infoObj, callback){
@@ -178,6 +205,11 @@ module.exports = function(appId, secretKey, version, mode){
         if (!listId || !callback) return fourSquare.fail(callback);
         fourSquare.get(fourSquare.query('/lists/'+listId+'/followers'), callback);
       },
+      status: function(listId, callback) {
+        this.followers(listId, function(err, data, res) {
+          fourSquare.status(err, data, res, callback);
+        });
+      }
     },
     specials: {
       detail: function(listId, infoObj, callback){
@@ -188,6 +220,11 @@ module.exports = function(appId, secretKey, version, mode){
         if (!infoObj || !callback) return fourSquare.fail(callback);
         fourSquare.get(fourSquare.query('/specials/search', infoObj), callback);
       },
+      status: function(listId, infoObj, callback) {
+        this.detail(listId, infoObj, function(err, data, res) {
+          fourSquare.status(err, data, res, callback);
+        });
+      }
     },
     events: {
       categories: function(callback){
@@ -198,12 +235,22 @@ module.exports = function(appId, secretKey, version, mode){
         if (!infoObj || !callback) return fourSquare.fail(callback);
         fourSquare.get(fourSquare.query('/events/search', infoObj), callback);
       },
+      status: function(callback) {
+        this.categories(function(err, data, res) {
+          fourSquare.status(err, data, res, callback);
+        });
+      }
     },
     pages: {
       venues: function(pageId, infoObj, callback){
         if (!pageId || !infoObj || !callback) return fourSquare.fail(callback);
         fourSquare.get(fourSquare.query('/pages/'+pageId+'/venues', infoObj), callback);
       },
+      status: function(pageId, infoObj, callback) {
+        this.venues(pageId, infoObj, function(err, data, res) {
+          fourSquare.status(err, data, res, callback);
+        });
+      }
     },
     config: {
       set_locale: function(locale){

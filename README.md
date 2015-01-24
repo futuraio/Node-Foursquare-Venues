@@ -12,6 +12,7 @@ var foursquare = require('node-foursquare-venues')('clientId', 'secretId', 'vers
 ```
 
 Note that `version` and `mode` are optional.
+Also note: if mode is not specified, no mode will be sent to foursquare. Foursquare will then use its internal default. At the time of writing (2015-01-12) this seems to be 'swarm'.
 
 ## Reference
 [API Reference](https://developer.foursquare.com/overview/venues)
@@ -37,28 +38,36 @@ A `searchObj` is an object containing the properties [outlined here.](https://de
    * `.menu(venueId, callback)`
    * `.photos(venueId, filterObj, callback)`
    * `.tips(venueId, filterObj, callback)`
+   * `.status(venueId, searchObj, callback)`
    
 * `foursquare.tips`
    * `.search(searchObj, callback)`
    * `.done(tipId, filterObj, callback)`
    * `.likes(tipId, callback)`
    * `.listed(tipId, filterObj, callback)`
+   * `.status(tipId, callback)`
    
 * `foursquare.lists`
    * `.detail(listId, filterObj, callback)`
    * `.followers(listId, callback)`
+   * `.status(listId, callback)`
    
 * `foursquare.specials`
    * `.detail(specialId, filterObj, callback)`
    * `.search(searchObj, callback)`
+   * `.status(specialId, filterObj, callback)`
 
 * `foursquare.events`
    * `.categories(callback)`
    * `.search(searchObj, callbac)`
+   * `.status(callback)`
 
 * `foursquare.pages`
    * `.venues(pageId, filterObj, callback)`
+   * `.status(pageId, filterObj, callback)`
 
+A new status method has been added to check your rate limits. This method is exposed for every group endpoint (e.g. venues/*, tips/*, etc.). 
+Because of the way Facebook sends out rate statuses (via headers), every callback now also returns the raw response object so you can check it yourself in the other requests.
 
 To run the tests run
 
