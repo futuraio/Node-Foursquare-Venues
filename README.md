@@ -37,17 +37,17 @@ A `searchObj` is an object containing the properties [outlined here.](https://de
    * `.menu(venueId, callback)`
    * `.photos(venueId, filterObj, callback)`
    * `.tips(venueId, filterObj, callback)`
-   
+
 * `foursquare.tips`
    * `.search(searchObj, callback)`
    * `.done(tipId, filterObj, callback)`
    * `.likes(tipId, callback)`
    * `.listed(tipId, filterObj, callback)`
-   
+
 * `foursquare.lists`
    * `.detail(listId, filterObj, callback)`
    * `.followers(listId, callback)`
-   
+
 * `foursquare.specials`
    * `.detail(specialId, filterObj, callback)`
    * `.search(searchObj, callback)`
@@ -62,7 +62,7 @@ A `searchObj` is an object containing the properties [outlined here.](https://de
 
 To run the tests run
 
-`mocha tests 'clientId' 'secretId'`
+`FS_CLIENT=YourFsClientId FS_SECRET=YourFsClientSecret mocha tests`
 
 ## License
 
