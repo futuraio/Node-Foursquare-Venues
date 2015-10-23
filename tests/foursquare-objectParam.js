@@ -4,7 +4,7 @@ var secret = process.env.FS_SECRET;
 var foursquare = require('../foursquare.js')({clientId: client, clientSecret:secret}),
 	assert = require('chai').assert;
 
-describe('the foursquare node api', function(){
+describe('the foursquare node api (object parameters)', function(){
 	this.timeout(5000);
 	describe('the venues methods', function(){
 		describe('venues#venue()', function(){
