@@ -5,13 +5,19 @@ var querystring = require('querystring');
 
 function noop () {};
 
-module.exports = function(appId, secretKey, version, mode){
-  
+module.exports = function(clientId, clientSecret, version, mode){
+  if (arguments.length === 1 && arguments[0] === Object(arguments[0])) {
+    clientId = arguments[0].clientId;
+    clientSecret = arguments[0].clientSecret;
+    version = arguments[0].version;
+    mode = arguments[0].mode;
+  }
+
   var fourSquare = {
     _request: function(method, path, callback){
       var requestOptions;
       var req;
-      
+
       requestOptions = {
         host: "api.foursquare.com",
         method: method,
@@ -24,7 +30,7 @@ module.exports = function(appId, secretKey, version, mode){
           'Content-Length': '0'
         },
       };
-      
+
       req = https.request(requestOptions);
       this._response(req, callback);
       req.write('');
@@ -37,12 +43,12 @@ module.exports = function(appId, secretKey, version, mode){
     _response: function(req, callback){
       var me = this;
       var err = null;
-        
+
       if (typeof req === 'function') return;
-      
+
       req.on('response', function(res){
         var response = '';
-        
+
         res.setEncoding('utf8');
         res.on('data', function(data){
           response += data;
@@ -71,7 +77,7 @@ module.exports = function(appId, secretKey, version, mode){
     locale: 'en',
     query: function(path, obj){
       var requestData;
-      
+
       if (obj) {
         requestData = querystring.stringify(obj);
         path += '?'+requestData+'&';
@@ -80,14 +86,14 @@ module.exports = function(appId, secretKey, version, mode){
       };
       version = version || '20120928';
       mode = mode || false;
-      return path+'client_id='+appId+'&client_secret='+secretKey+'&v='+version+(false !== mode ? ('&m='+mode) : '');
+      return path+'client_id='+clientId+'&client_secret='+clientSecret+'&v='+version+(false !== mode ? ('&m='+mode) : '');
     },
     fail: function(cb) {
       cb = cb || noop;
       cb('Invalid parameters', null);
     },
   };
-  
+
   return {
     venues: {
       venue: function(venueId, infoObj, callback){
